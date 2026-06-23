@@ -1,7 +1,7 @@
 import os
 import re
 import csv
-import fitz  # PyMuPDF
+import pymupdf  # PyMuPDF
 
 def extract_pid_data(input_folder="input", lines_output="line_list.csv", valves_output="valve_list.csv"):
     # Ensure the input directory exists
@@ -42,7 +42,7 @@ def extract_pid_data(input_folder="input", lines_output="line_list.csv", valves_
         filepath = os.path.join(input_folder, filename)
         
         try:
-            doc = fitz.open(filepath)
+            doc = pymupdf.open(filepath)
         except Exception as e:
             print(f"Error opening {filename}: {e}")
             continue
